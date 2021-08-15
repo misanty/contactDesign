@@ -6,39 +6,61 @@ import test.execute.inputController.RepositoryCrud;
 import test.execute.menu.ExecuteCrud;
 import test.execute.menu.Menu;
 
-import java.io.File;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Main {
 
     public static void main(String[] args) {
 
         RepositoryCrud crud = CrudRealization.getInstance();
+        crud.setFileName(args[0]);
         ExecuteCrud executeCrud = ExecuteCrud.getInstance(crud);
         Menu menuOption = new Menu(executeCrud);
         menuOption.execute();
-System.out.println(File.separator);
+/*
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter lear year");
+        int out = scanner.nextInt();
+
+        if(out >= 1900 && out <= 3000)
+        {
+            if (out % 4 == 0 && out % 100 != 0 || out % 400 == 0)
+            {
+                System.out.println("Leap");
+            }
+            else {
+                System.out.println("Regular");
+            }
+        }
+*//*
+
+        System.out.println(File.separator);
+
+
+        System.out.println(Contact.class.getFields().length);
+        System.out.println("****************************************************");
+        boolean[] tstParams = new boolean[]{true, false, true};
+        inverseFlags(tstParams);
+        System.out.println(Arrays.toString(tstParams));
 
         // String to be scanned to find the pattern.
         String fileName = "This order was placed for QT3000! OK?";
 
         String input = "";
-        String pattern = "^.*\\w*((?i)"+input+"(?-i))\\w*.*$";
+        String pattern = "^.*\\w*((?i)" + input + "(?-i))\\w*.*$";
         // Create a Pattern object
         Pattern r = Pattern.compile(pattern);
 
         // Now create matcher object.
         Matcher m = r.matcher(fileName);
 
-        if (m.find( )) {
-            System.out.println("Found value: " + m.group(0) );
-            System.out.println("Found value: " + m.group(1) );
-            System.out.println("Found value: " + m.group(2) );
-        }else {
+        if (m.find()) {
+            System.out.println("Found value: " + m.group(0));
+            System.out.println("Found value: " + m.group(1));
+            System.out.println("Found value: " + m.group(2));
+        } else {
             System.out.println("NO MATCH");
         }
-
+*/
         //   MenuOption menuOption = new MenuOption()
 //menuOptionExecution.initialize(5).run();
 
@@ -66,5 +88,11 @@ System.out.println(File.separator);
 */
 
 
+    }
+
+    public static void inverseFlags(boolean[] params) {
+        for (int i = 0; i < params.length; i++) {
+            params[i] = !params[i];
+        }
     }
 }

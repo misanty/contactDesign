@@ -1,11 +1,13 @@
 package test.execute.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class Contact {
+public abstract class Contact implements Serializable {
+
    private final Pattern phonePattern = Pattern.compile("\\+?" +
             "((\\([0-9A-Za-z]+\\)|[0-9A-Za-z]+)"
             + "|([0-9A-Za-z]+[ -]\\([0-9A-Za-z]{2,}\\))|[0-9A-Za-z]+[ -][0-9A-Za-z]{2,})"
@@ -33,7 +35,9 @@ public abstract class Contact {
         return phoneNumber;
     }
 
-    abstract public String getInfo();
+    abstract public String getShortInfo();
+
+    abstract public String getDetailedInfo();
 
     abstract public List<String> possibleFields();
 
@@ -52,6 +56,14 @@ public abstract class Contact {
 
     public LocalDate getDateEdited() {
         return dateEdited;
+    }
+
+    public boolean setFieldAndTime(String fieldName, String value) {
+        boolean result = changeFieldValue(fieldName, value);
+        if (result) {
+            dateEdited = LocalDate.now();
+        }
+        return result;
     }
 
     public boolean isNumberCorrectIfSoSetNumber(String phoneNumber) {

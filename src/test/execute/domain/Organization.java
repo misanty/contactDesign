@@ -70,9 +70,19 @@ public class Organization extends Contact {
     }
 
     @Override
-    public String getInfo() {
+    public String getShortInfo() {
 
-        return "Name: " + getName() + "Surname: " + getAddress();
+        return "Name: " + getName() + " Address: " + getAddress();
     }
 
+
+    @Override
+    public String getDetailedInfo() {
+        return "Organization name: " + getName() + "\r\n" +
+                "Address: " + getAddress() + "\r\n" +
+                "Number: " + getPhoneNumber() + "\r\n" +
+                "Time created: " + getDateCreated() + "\r\n" +
+                "Time last edit: " + getDateEdited() + "\r\n"
+                ;
+    }
 }

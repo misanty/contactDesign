@@ -18,9 +18,5 @@ public class Main {
 
     }
 
-    public static void inverseFlags(boolean[] params) {
-        for (int i = 0; i < params.length; i++) {
-            params[i] = !params[i];
-        }
-    }
+   
 }
